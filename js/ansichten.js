@@ -1,4 +1,4 @@
-/* Ansichten für alle: Start (Portal) und Meine Klasse. Dazu Bausteine, die auch der Lehrkräfte-Bereich nutzt. */
+/* Ansichten für alle: Start (Dashboard) und Meine Klasse. Dazu Bausteine, die auch der Lehrkräfte-Bereich nutzt. */
 (function () {
   "use strict";
   const { D, H, F, R } = BG;
@@ -117,7 +117,7 @@
     }
   };
 
-  /* ---------- Ansicht: Start (Portal) ----------
+  /* ---------- Ansicht: Start (Dashboard) ----------
      Aufbau: Phase wählen → Hinweise → (ab Stichtag) COOLflex-Woche → Kacheln für diese Phase.
      Gespeichert wird "E" (Einführungsphase), "Q" (Qualifikationsphase) oder – für COOLflex – eine Klasse wie "11A".
      Frühere Werte "11", "12", "13" werden umgerechnet. */

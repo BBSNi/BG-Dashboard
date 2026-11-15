@@ -1,4 +1,7 @@
-# BG-Portal · Web-App für das Berufliche Gymnasium
+# BG-Dashboard · Web-App für das Berufliche Gymnasium
+
+Adresse: https://bbsni.github.io/BG-Dashboard/ (GitHub: `BBSNi/BG-Dashboard`).
+Der Ordner im Second Brain heißt weiterhin `BG-Portal`, die Datei `config/portal.json` behält ihren Namen.
 
 Entwurf, Stand 15.11.2026. Dashboard für Lernende (nach Einführungs- und Qualifikationsphase) mit vorbereitetem COOLflex-Auftragsplaner,
 der erst ab dem COOLflex-Start erscheint (siehe „COOLflex-Schalter“).
@@ -36,7 +39,7 @@ In `config/portal.json` steht `"coolflex": { "sichtbar_ab": "2027-08-19" }` (Pla
 | Lehrkräfte-Bereich | nur über den Direktlink `…/#coolflex` (für das COOL-Team zum Testen) | Link im Fuß und in der Navigation |
 | Hinweis „Vorschau ohne Server“ | erscheint nicht | erscheint, wenn kein Server antwortet |
 
-Ohne COOLflex braucht das Portal **keinen PHP-Server** – es kann so auf GitHub Pages laufen.
+Ohne COOLflex braucht das Dashboard **keinen PHP-Server** – es kann so auf GitHub Pages laufen.
 Zum COOLflex-Start: Datum prüfen, Server einrichten (siehe unten) und im Manifest die Kurzbefehle
 „Meine Klasse“ und „Lehrkräfte“ wieder ergänzen (`manifest.webmanifest` → `shortcuts`).
 
@@ -137,7 +140,6 @@ Dann `data/` und `api/config.php` in der Serverkonfiguration sperren.
 - [ ] `api/api.php` ist **noch nicht auf einem echten PHP-Server getestet** (auf diesem Mac gibt es kein PHP).
 - [ ] Offline-Funktion (Service Worker) im Test-Browser nicht prüfbar – auf Handy/Tablet testen.
 - [ ] Adresse des **Abiturrechners** in `config/portal.json` eintragen.
-- [ ] Prüfen, ob der **Versetzungsrechner** unter `https://bbsni.github.io/schulrechner/` erreichbar ist (Adresse ist eingetragen).
 - [ ] **Starttermin COOLflex** festlegen und `coolflex.sichtbar_ab` anpassen.
 - [ ] **Ferientermine** mit dem Kultusministerium abgleichen (Verwaltung bzw. `js/config.js`).
 - [ ] Zielgruppen der Seiten Fehlzeiten und Oberstufenreform prüfen (teils an Lehrkräfte gerichtet).

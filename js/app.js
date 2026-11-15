@@ -25,7 +25,7 @@
   let letzteAnsicht = null;
   function zeichnen() {
     const name = aktuelleAnsicht(), v = ANSICHTEN[name], cool = BG.coolflexAktiv();
-    document.title = (name === "start" ? "" : v.titel + " · ") + "BG Nienburg";
+    document.title = (name === "start" ? "" : v.titel + " · ") + "BG-Dashboard";
     /* COOLflex-Teile der Navigation erst ab Stichtag; den Lehrkräfte-Punkt auch, wenn jemand per Direktlink dort ist */
     document.querySelectorAll('[data-bereich="klasse"]').forEach(a => { a.hidden = !cool; });
     document.querySelectorAll('[data-bereich="lehrkraefte"]').forEach(a => { a.hidden = !cool && v.bereich !== "lehrkraefte"; });
@@ -35,7 +35,7 @@
     ziel.innerHTML = v.f();
     if (letzteAnsicht !== name) { window.scrollTo(0, 0); letzteAnsicht = name; }
   }
-  /* Hinweise zu Server/Vorschau betreffen nur COOLflex – ohne COOLflex braucht das Portal keinen Server */
+  /* Hinweise zu Server/Vorschau betreffen nur COOLflex – ohne COOLflex braucht das Dashboard keinen Server */
   function meldungenZeichnen(mitDaten) {
     const d = BG.Daten; let h = "";
     if (!mitDaten) { document.getElementById("meldungen").innerHTML = ""; return; }

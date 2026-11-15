@@ -1,6 +1,6 @@
 {
-  "name": "BG Nienburg – Berufliches Gymnasium",
-  "short_name": "BG Nienburg",
+  "name": "BG-Dashboard – Berufliches Gymnasium BBS Nienburg",
+  "short_name": "BG-Dashboard",
   "description": "Rechner und Informationen zur Oberstufe am Beruflichen Gymnasium der BBS Nienburg.",
   "lang": "de",
   "start_url": "./#start",
