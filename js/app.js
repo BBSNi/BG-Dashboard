@@ -99,6 +99,12 @@
 
   /* Offline-Fähigkeit (nur über http(s), nicht bei lokal geöffneter Datei) */
   if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
-    navigator.serviceWorker.register("sw.js").catch(() => { });
+    navigator.serviceWorker.register("sw.js").then(r => r.update()).catch(() => { });
+    /* Neue Fassung übernommen → einmal neu laden, damit sie sofort sichtbar ist (nicht beim allerersten Besuch) */
+    const hatteAlteFassung = !!navigator.serviceWorker.controller;
+    let neuGeladen = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (hatteAlteFassung && !neuGeladen) { neuGeladen = true; location.reload(); }
+    });
   }
 })();

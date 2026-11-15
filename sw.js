@@ -1,6 +1,6 @@
 /* Service Worker: hält die App auf dem Gerät bereit, damit sie auch ohne Netz startet.
    Bei Änderungen an Dateien die VERSION erhöhen – dann laden alle Geräte die neue Fassung. */
-const VERSION = "bg-dashboard-13";
+const VERSION = "bg-dashboard-14";
 const DATEIEN = [
   "./", "index.html", "manifest.webmanifest", "css/app.css",
   "js/config.js", "js/kern.js", "js/daten.js", "js/ansichten.js", "js/lehrkraefte.js", "js/app.js",
@@ -9,7 +9,8 @@ const DATEIEN = [
 ];
 
 self.addEventListener("install", e => {
-  e.waitUntil(caches.open(VERSION).then(c => c.addAll(DATEIEN)).then(() => self.skipWaiting()));
+  // cache: "reload" – sonst könnte der Browser-Zwischenspeicher (bei GitHub Pages bis zu 10 Minuten) alte Dateien liefern
+  e.waitUntil(caches.open(VERSION).then(c => c.addAll(DATEIEN.map(u => new Request(u, { cache: "reload" })))).then(() => self.skipWaiting()));
 });
 self.addEventListener("activate", e => {
   e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== VERSION).map(k => caches.delete(k)))).then(() => self.clients.claim()));
