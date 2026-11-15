@@ -37,6 +37,18 @@
     },
     {
       "gruppe": "rechnen",
+      "titel": "Einbringungsverpflichtung",
+      "text": "Welche Halbjahresergebnisse fürs Abitur zählen",
+      "icon": "rechner",
+      "url": "https://bbsni.github.io/schulrechner/Einbringung/",
+      "zielgruppe": "lernende",
+      "phasen": [
+        "E",
+        "Q"
+      ]
+    },
+    {
+      "gruppe": "rechnen",
       "titel": "Abiturrechner",
       "text": "Reicht es fürs Abitur?",
       "icon": "rechner",
