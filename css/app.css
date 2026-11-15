@@ -267,6 +267,7 @@ legend { font-size: .85rem; font-weight: 600; padding: 0; margin-bottom: 5px; }
 .fusszeile a { color: var(--grau); text-decoration: none; }
 .fusszeile a:hover { color: var(--akzent); }
 .fusszeile .rechts { margin-left: auto; }
+.datenschutz { font-size: .8rem; color: var(--grau); margin-top: -6px; line-height: 1.45; }
 .meldung { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(86px + env(safe-area-inset-bottom, 0px)); background: var(--tinte); color: var(--papier); padding: 10px 16px; border-radius: 10px; font-size: .9rem; z-index: 50; max-width: calc(100vw - 32px); }
 @media (min-width: 900px) { .meldung { bottom: 24px; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

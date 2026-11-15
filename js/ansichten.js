@@ -137,6 +137,9 @@
   }
   const fuerLernende = x => (x.zielgruppe || "lernende") !== "lehrkraefte";
 
+  /* Hinweis zum Datenschutz (Startseite und „Alle Seiten“) */
+  const DATENSCHUTZ = `<p class="datenschutz">Das Dashboard speichert keine personenbezogenen Daten von Lernenden. Es gibt keine Anmeldung; nur die gewählte Phase bzw. Klasse wird auf diesem Gerät gemerkt.</p>`;
+
   function phasenwahl(ph) {
     return `<div class="klassenwahl" role="group" aria-label="Phase">${PHASEN.map(p => `<button type="button" data-phase="${p.id}" aria-pressed="${p.id === ph}">${p.name}</button>`).join("")}</div>`;
   }
@@ -159,7 +162,7 @@
     }
     h += `<footer class="fusszeile">${(P.fusszeile || []).map(f => `<a href="${H.esc(f.url)}" target="_blank" rel="noopener">${H.esc(f.titel)} ↗</a>`).join("")}
       ${cool ? `<a class="rechts" href="#coolflex"><svg width="14" height="14" style="vertical-align:-2px"><use href="#i-schloss"/></svg> Bereich Lehrkräfte</a>` : ""}</footer>`;
-    return h;
+    return h + DATENSCHUTZ;
   }
 
   /* COOLflex-Woche auf der Startseite (nur Einführungsphase, nur ab Stichtag) */
@@ -188,7 +191,7 @@
     let h = `<div class="seitenkopf"><div><h1>Alle Seiten</h1><p class="leise">Alle Informationen für die Oberstufe – Einführungsphase und Qualifikationsphase.</p></div></div>`;
     h += `<div class="raster-2">${gruppen.map(g => `<section class="gruppe"><span class="eyebrow">${H.esc(g.titel)}</span><div class="kacheln" style="grid-template-columns:1fr">${g.kacheln.map(x => kachel(x, true)).join("")}</div></section>`).join("")}`;
     if (schule.length) h += `<section class="gruppe"><span class="eyebrow">Schule</span><div class="kacheln" style="grid-template-columns:1fr">${schule.map(x => kachel(x)).join("")}</div></section>`;
-    return h + `</div>`;
+    return h + `</div>` + DATENSCHUTZ;
   }
 
   function phasenText(x) {
