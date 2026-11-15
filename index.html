@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BG Nienburg</title>
+<meta name="description" content="Portal des Beruflichen Gymnasiums der BBS Nienburg: Rechner und Informationen zur Oberstufe an einem Ort.">
+<meta name="theme-color" content="#1d4e9e">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="BG Nienburg">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<!-- Symbole (einmal definiert, überall mit <use> verwendet) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-start" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+    <symbol id="i-klasse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/><path d="M7 13h4M7 17h7"/></symbol>
+    <symbol id="i-lehrkraft" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+    <symbol id="i-rechner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 19h8"/></symbol>
+    <symbol id="i-karte" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></symbol>
+    <symbol id="i-kalender" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/><path d="M10 13l4 4M14 13l-4 4"/></symbol>
+    <symbol id="i-neu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v5h-5"/></symbol>
+    <symbol id="i-ampel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+    <symbol id="i-buch" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5z"/><path d="M4 19a2 2 0 0 1 2-2h13"/></symbol>
+    <symbol id="i-alle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-zahnrad" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></symbol>
+    <symbol id="i-schloss" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <symbol id="i-links" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></symbol>
+    <symbol id="i-rechts" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></symbol>
+  </defs>
+</svg>
+
+<header class="kopf">
+  <div class="kopf-innen">
+    <a class="marke" href="#start">
+      <img class="marke-zeichen" src="icons/logo-bbs.png" alt="Logo der BBS Nienburg" width="55" height="36">
+      <span class="marke-text"><b>BG Nienburg</b><span>Berufliches Gymnasium</span></span>
+    </a>
+    <nav class="nav-oben" aria-label="Hauptbereiche">
+      <a href="#start" data-bereich="start">Start</a>
+      <a href="#klasse" data-bereich="klasse" hidden>Meine Klasse</a>
+      <a href="#alle" data-bereich="alle">Alle Seiten</a>
+      <a href="#coolflex" data-bereich="lehrkraefte" hidden>Lehrkräfte</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inhalt">
+  <div id="meldungen" class="ansicht" style="gap:10px"></div>
+  <section class="ansicht" id="ansicht" aria-live="polite"></section>
+</main>
+
+<nav class="nav-unten" aria-label="Hauptbereiche">
+  <a href="#start" data-bereich="start"><svg><use href="#i-start"/></svg>Start</a>
+  <a href="#klasse" data-bereich="klasse" hidden><svg><use href="#i-klasse"/></svg>Meine Klasse</a>
+  <a href="#alle" data-bereich="alle"><svg><use href="#i-alle"/></svg>Alle Seiten</a>
+  <a href="#coolflex" data-bereich="lehrkraefte" hidden><svg><use href="#i-lehrkraft"/></svg>Lehrkräfte</a>
+</nav>
+
+<!-- Formular: Auftrag eintragen / bearbeiten -->
+<dialog id="dlg-auftrag">
+  <form class="dlg" id="form-auftrag" method="dialog" novalidate>
+    <div class="karte-kopf">
+      <h2 id="dlg-titel">Auftrag eintragen</h2>
+      <button type="button" class="symbolknopf" data-schliessen aria-label="Schließen">✕</button>
+    </div>
+    <div class="formular">
+      <fieldset class="ganz"><legend>Klassen</legend><div class="wahl" id="a-klassen"></div></fieldset>
+      <label class="feld">Fach<select id="a-fach"></select></label>
+      <label class="feld">Lehrkraft <span class="tipp">Kürzel, freiwillig</span><input type="text" id="a-lehrkraft" maxlength="8" autocomplete="off"></label>
+      <label class="feld ganz">Titel des Auftrags<input type="text" id="a-titel" maxlength="90" autocomplete="off" placeholder="Erörterung: Social Media in der Schule"></label>
+      <label class="feld">Start<input type="date" id="a-start"></label>
+      <label class="feld">Ende (Abgabe)<input type="date" id="a-ende"></label>
+      <label class="feld">Umfang in COOL-Stunden <span class="tipp">geschätzt, gesamt</span><input type="number" id="a-umfang" min="0.5" max="60" step="0.5"></label>
+      <fieldset><legend>Sozialform</legend><div class="wahl" id="a-soz"></div></fieldset>
+      <label class="feld ganz">Notiz <span class="tipp">freiwillig, z. B. Moodle-Kurs</span><input type="text" id="a-notiz" maxlength="140" autocomplete="off"></label>
+    </div>
+    <div class="vorschau" id="a-vorschau"></div>
+    <div class="fuss">
+      <button type="button" class="knopf gefahr" id="a-loeschen" hidden>Löschen</button>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-left:auto">
+        <span class="fehler" id="a-fehler" role="alert"></span>
+        <button type="button" class="knopf" data-schliessen>Abbrechen</button>
+        <button type="submit" class="knopf haupt" id="a-speichern">Speichern</button>
+      </div>
+    </div>
+  </form>
+</dialog>
+
+<script src="js/config.js"></script>
+<script src="js/kern.js"></script>
+<script src="js/daten.js"></script>
+<script src="js/ansichten.js"></script>
+<script src="js/lehrkraefte.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

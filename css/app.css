@@ -1,0 +1,272 @@
+/* BG-Portal · Gestaltung
+   Farben der BBS Nienburg (Blau/Grün wie Onboarding-Seite), Sozialformen A/B/C aus dem COOLflex-Material.
+   Aufbau: Kopfleiste · Inhalt (Ansichten) · untere Navigation auf dem Handy. */
+
+@font-face { font-family: "Inter"; src: url("../fonts/inter-latin.woff2") format("woff2"); font-weight: 400 700; font-display: swap; }
+@font-face { font-family: "Space Grotesk"; src: url("../fonts/spacegrotesk-latin.woff2") format("woff2"); font-weight: 500 700; font-display: swap; }
+
+:root {
+  --blau: #1d4e9e; --blau-dunkel: #0e2a54; --blau-hell: #eef3fb;
+  --gruen: #63b32e; --gruen-tief: #1e5e23; --gruen-hell: #edf7e4;
+  --tinte: #14202e; --grau: #5a6472; --grau-2: #8b94a1; --linie: #e3e8ef;
+  --papier: #f5f8f3; --flaeche: #ffffff; --flaeche-2: #eef2f6;
+  --akzent: var(--blau); --akzent-text: #ffffff;
+  --soz-a: #c9bcff; --soz-b: #fbd85a; --soz-c: #ffa8b5;
+  --f-p1: #6f5bd8; --f-de: #d4587a; --f-en: #c48a12; --f-bif: #1f8a99; --f-bvvw: #5f7391;
+  --st-leer: #eff1f5; --st-leer-t: #8b94a1;
+  --st-wenig: #d7e7fb; --st-wenig-t: #1b4c80; --st-wenig-bar: #5d9ad6;
+  --st-ok: #d4efc4; --st-ok-t: #1e5e23; --st-ok-bar: #4e9a1f;
+  --st-viel: #ffd3cd; --st-viel-t: #9a1f1a; --st-viel-bar: #d64541;
+  --ferien: #e6e9ef; --hinweis: #fff4cc; --hinweis-t: #6b4e00;
+  --schrift: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --titel: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --r: 16px; --r-klein: 10px;
+  --schatten: 0 1px 2px rgba(16,34,64,.05), 0 6px 20px rgba(16,34,64,.06);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --blau: #7aa7f0; --blau-dunkel: #c9dbff; --blau-hell: #182a45;
+    --gruen: #7fcf4a; --gruen-tief: #b6eb93; --gruen-hell: #1b2e17;
+    --tinte: #e8edf4; --grau: #a6b0bd; --grau-2: #7c8693; --linie: #2a3442;
+    --papier: #0f141b; --flaeche: #171e28; --flaeche-2: #1f2834;
+    --akzent: #7aa7f0; --akzent-text: #0f141b;
+    --soz-a: #9f8cf5; --soz-b: #e2bb35; --soz-c: #ee8193;
+    --f-p1: #8f7cf0; --f-de: #e27897; --f-en: #d9a63a; --f-bif: #3fb0bf; --f-bvvw: #8597b3;
+    --st-leer: #1c232d; --st-leer-t: #6c7684;
+    --st-wenig: #1b3350; --st-wenig-t: #a9d0f7;
+    --st-ok: #1c3a1f; --st-ok-t: #a8e48b;
+    --st-viel: #4b1f1f; --st-viel-t: #ffb3ab;
+    --ferien: #1a2029; --hinweis: #3a3011; --hinweis-t: #f4dc8a;
+    --schatten: none;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--papier); color: var(--tinte); font-family: var(--schrift); font-size: 15px; line-height: 1.5;
+  -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent;
+  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
+}
+@media (min-width: 900px) { body { padding-bottom: 32px; } }
+h1, h2, h3 { font-family: var(--titel); margin: 0; line-height: 1.15; text-wrap: balance; }
+h1 { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 700; }
+h2 { font-size: 1.15rem; font-weight: 700; }
+h3 { font-size: 1rem; font-weight: 600; }
+p { margin: 0; }
+a { color: var(--akzent); }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--akzent); outline-offset: 2px; }
+.leise { color: var(--grau); }
+.klein { font-size: .85rem; }
+.zahl { font-variant-numeric: tabular-nums; }
+.eyebrow { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--grau-2); }
+[hidden] { display: none !important; }
+
+/* ---------- Kopfleiste ---------- */
+.kopf {
+  position: sticky; top: 0; z-index: 20; background: var(--flaeche); border-bottom: 1px solid var(--linie);
+  padding: calc(10px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px));
+}
+.kopf-innen { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; gap: 12px; }
+.marke { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; min-width: 0; }
+.marke-zeichen { height: 36px; width: auto; flex: none; display: block; box-sizing: border-box; padding: 3px 4px; background: #fff; border-radius: 8px; }   /* Schullogo BBS Nienburg, auf weißem Grund – auch im Dunkelmodus lesbar */
+.marke-text { display: flex; flex-direction: column; min-width: 0; }
+.marke-text b { font-family: var(--titel); font-size: 1rem; white-space: nowrap; }
+.marke-text span { font-size: .75rem; color: var(--grau); white-space: nowrap; }
+.kopf-rechts { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+@media (max-width: 520px) { .kopf-rechts label, .marke-text span { display: none; } }
+.nav-oben { display: none; gap: 4px; margin-left: 20px; }
+.nav-oben a { text-decoration: none; color: var(--grau); padding: 7px 12px; border-radius: 999px; font-weight: 500; font-size: .92rem; }
+.nav-oben a[aria-current="page"] { background: var(--blau-hell); color: var(--blau); }
+@media (min-width: 900px) { .nav-oben { display: flex; } }
+
+/* ---------- Untere Navigation (Handy) ---------- */
+.nav-unten {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; background: var(--flaeche); border-top: 1px solid var(--linie);
+  display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;   /* passt sich an 2–4 sichtbare Punkte an */
+  padding: 6px max(8px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px));
+}
+.nav-unten a { display: flex; flex-direction: column; align-items: center; gap: 2px; text-decoration: none; color: var(--grau); font-size: .72rem; font-weight: 500; padding: 4px 0; border-radius: 10px; }
+.nav-unten a svg { width: 22px; height: 22px; }
+.nav-unten a[aria-current="page"] { color: var(--blau); }
+@media (min-width: 900px) { .nav-unten { display: none; } }
+
+/* ---------- Inhalt ---------- */
+main { max-width: 1180px; margin: 0 auto; padding: 20px max(16px, env(safe-area-inset-right, 0px)) 24px max(16px, env(safe-area-inset-left, 0px)); display: flex; flex-direction: column; gap: 18px; }
+.ansicht { display: flex; flex-direction: column; gap: 18px; }
+.seitenkopf { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.seitenkopf > div:first-child { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.karte { background: var(--flaeche); border: 1px solid var(--linie); border-radius: var(--r); padding: 16px; display: flex; flex-direction: column; gap: 12px; min-width: 0; box-shadow: var(--schatten); }
+.karte-kopf { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 14px; }
+.raster-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* Unternavigation Lehrkräfte */
+.reiter { display: flex; gap: 6px; flex-wrap: wrap; }
+.reiter a { text-decoration: none; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--linie); background: var(--flaeche); color: var(--grau); font-weight: 500; font-size: .9rem; }
+.reiter a[aria-current="page"] { background: var(--tinte); color: var(--papier); border-color: var(--tinte); }
+
+/* ---------- Bedienelemente ---------- */
+.knopf { border: 1px solid var(--linie); background: var(--flaeche); padding: 8px 14px; border-radius: var(--r-klein); cursor: pointer; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; min-height: 38px; }
+.knopf:hover { border-color: var(--grau-2); }
+.knopf.haupt { background: var(--akzent); border-color: var(--akzent); color: var(--akzent-text); font-weight: 600; }
+.knopf.leer { border-color: transparent; background: transparent; }
+.knopf.gefahr { color: var(--st-viel-t); }
+.knopf[disabled] { opacity: .5; cursor: not-allowed; }
+.symbolknopf { width: 38px; height: 38px; border: 1px solid var(--linie); background: var(--flaeche); border-radius: var(--r-klein); cursor: pointer; display: inline-grid; place-items: center; }
+select, input[type=text], input[type=password], input[type=date], input[type=number], textarea {
+  border: 1px solid var(--linie); background: var(--flaeche); border-radius: var(--r-klein); padding: 8px 10px; min-height: 38px; width: 100%; min-width: 0;
+}
+select.schmal { width: auto; }
+textarea { resize: vertical; min-height: 90px; }
+label.feld { display: flex; flex-direction: column; gap: 5px; font-size: .85rem; font-weight: 600; min-width: 0; }
+label.feld .tipp { font-weight: 400; color: var(--grau-2); }
+.wochenwahl { display: flex; align-items: center; gap: 8px; flex-wrap: nowrap; min-width: 0; }
+.wochenwahl > * { flex: none; }
+.wochenwahl .label { font-weight: 600; font-variant-numeric: tabular-nums; flex: 0 1 auto; min-width: 0; text-align: center; }
+.wochenwahl select { margin-left: 4px; }
+@media (max-width: 520px) { .wochenwahl .label .leise { display: block; } .wochenwahl .knopf.leer { padding-inline: 6px; } }
+.klassenwahl { display: flex; gap: 6px; flex-wrap: wrap; }
+.klassenwahl button { border: 1px solid var(--linie); background: var(--flaeche); padding: 6px 14px; border-radius: var(--r-klein); cursor: pointer; font-family: var(--titel); font-weight: 700; }
+.klassenwahl button small { font-family: var(--schrift); font-weight: 500; color: var(--grau-2); margin-left: 4px; }
+.klassenwahl button[aria-pressed="true"] { background: var(--tinte); color: var(--papier); border-color: var(--tinte); }
+.klassenwahl button[aria-pressed="true"] small { color: inherit; opacity: .7; }
+
+/* ---------- Hinweise ---------- */
+.banner { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; justify-content: space-between; padding: 12px 14px; border-radius: var(--r-klein); background: var(--blau-hell); color: var(--tinte); }
+.banner.gelb { background: var(--hinweis); color: var(--hinweis-t); }
+.banner.rot { background: var(--st-viel); color: var(--st-viel-t); }
+.banner a { color: inherit; font-weight: 600; }
+.liste-hinweise { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.liste-hinweise li { display: flex; gap: 10px; align-items: flex-start; font-size: .92rem; }
+.liste-hinweise li button { all: unset; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+.punkt { width: 10px; height: 10px; border-radius: 50%; flex: none; margin-top: 6px; }
+.punkt.viel { background: var(--st-viel-bar); } .punkt.wenig { background: var(--st-wenig-bar); } .punkt.info { background: var(--grau-2); }
+
+/* ---------- Kacheln (Portal) ---------- */
+.gruppe { display: flex; flex-direction: column; gap: 10px; }
+.kacheln { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.kachel { display: flex; gap: 12px; align-items: center; padding: 14px; border-radius: var(--r); background: var(--flaeche); border: 1px solid var(--linie); text-decoration: none; color: inherit; box-shadow: var(--schatten); transition: transform .12s ease, border-color .12s ease; min-width: 0; }
+a.kachel:hover { transform: translateY(-1px); border-color: var(--blau); }
+.kachel .symbol { width: 42px; height: 42px; border-radius: 12px; background: var(--blau-hell); color: var(--blau); display: grid; place-items: center; flex: none; }
+.kachel .symbol svg { width: 22px; height: 22px; }
+.kachel .t { display: flex; flex-direction: column; min-width: 0; }
+.kachel .t b { font-weight: 600; }
+.kachel .t span { font-size: .85rem; color: var(--grau); }
+.kachel.folgt { opacity: .6; box-shadow: none; }
+.marke-neu { display: inline-block; background: var(--hinweis); color: var(--hinweis-t); font-size: .7rem; font-weight: 700; padding: 1px 7px; border-radius: 6px; margin-left: 6px; vertical-align: 2px; }
+
+/* ---------- Status, Klassenkacheln, Ampel ---------- */
+.pille { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font-size: .8rem; font-weight: 600; white-space: nowrap; }
+.st-leer { background: var(--st-leer); color: var(--st-leer-t); }
+.st-wenig { background: var(--st-wenig); color: var(--st-wenig-t); }
+.st-ok { background: var(--st-ok); color: var(--st-ok-t); }
+.st-viel { background: var(--st-viel); color: var(--st-viel-t); }
+.st-ferien { background: repeating-linear-gradient(135deg, var(--ferien) 0 6px, transparent 6px 12px); color: var(--grau-2); }
+.klassenkacheln { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+.klassenkachel { border: 0; border-radius: var(--r); padding: 14px; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 2px; }
+.klassenkachel .k { font-family: var(--titel); font-weight: 700; font-size: 1.05rem; }
+.klassenkachel .k small { font-family: var(--schrift); font-weight: 500; font-size: .75rem; opacity: .8; margin-left: 4px; }
+.klassenkachel .h { font-family: var(--titel); font-size: 1.7rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.klassenkachel .s { font-size: .82rem; }
+
+table.ampel { border-collapse: separate; border-spacing: 4px; min-width: 100%; }
+table.ampel th { font-weight: 500; font-size: .75rem; color: var(--grau); text-align: center; white-space: nowrap; padding: 0 2px; }
+table.ampel th .kw { display: block; font-weight: 700; color: var(--tinte); }
+table.ampel th.jetzt .kw { color: var(--akzent); }
+table.ampel th.zeile { text-align: left; font-family: var(--titel); font-size: .95rem; color: var(--tinte); position: sticky; left: 0; background: var(--flaeche); z-index: 1; padding-right: 6px; }
+table.ampel td { padding: 0; }
+.zelle { width: 100%; min-width: 56px; height: 50px; border: 0; border-radius: 8px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; font-variant-numeric: tabular-nums; position: relative; }
+.zelle b { font-size: .98rem; }
+.zelle small { font-size: .68rem; opacity: .85; }
+.zelle.st-ferien { cursor: default; }
+.zelle.gewaehlt { outline: 2px solid var(--tinte); outline-offset: 1px; }
+.zelle .flagge { position: absolute; top: 2px; right: 5px; font-size: .7rem; font-weight: 800; color: var(--st-viel-t); }
+table.ampel.kompakt .zelle { height: 34px; min-width: 40px; }
+table.ampel.kompakt .zelle small { display: none; }
+.legende { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .8rem; color: var(--grau); }
+.legende span { display: inline-flex; align-items: center; gap: 6px; }
+.legende i { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+
+/* ---------- Auftragslisten ---------- */
+.fach { display: inline-block; min-width: 3.4em; text-align: center; padding: 2px 8px; border-radius: 6px; font-size: .76rem; font-weight: 700; color: #fff; }
+.soz { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 5px; font-family: var(--titel); font-weight: 700; font-size: .72rem; color: #1f1c30; vertical-align: middle; flex: none; }
+.soz.A { background: var(--soz-a); } .soz.B { background: var(--soz-b); } .soz.C { background: var(--soz-c); }
+.auftragsliste { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.auftragsliste li { display: grid; grid-template-columns: auto 1fr auto; gap: 4px 12px; align-items: center; padding: 9px 11px; border-radius: var(--r-klein); background: var(--flaeche-2); }
+.auftragsliste .t { min-width: 0; }
+.auftragsliste .t strong { font-weight: 600; }
+.karten { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; }
+.auftrag { border: 1px solid var(--linie); border-radius: var(--r-klein); padding: 12px 14px; display: flex; flex-direction: column; gap: 6px; background: var(--flaeche); }
+.auftrag .oben { display: flex; gap: 8px; align-items: center; font-size: .82rem; color: var(--grau); }
+.auftrag .frist { font-size: .84rem; font-weight: 600; }
+.auftrag .frist.bald { color: var(--st-viel-t); }
+.fortschritt { height: 6px; border-radius: 3px; background: var(--flaeche-2); overflow: hidden; }
+.fortschritt i { display: block; height: 100%; background: var(--akzent); }
+.leerzustand { padding: 18px; border-radius: var(--r-klein); background: var(--flaeche-2); color: var(--grau); }
+
+/* ---------- Zeitstrahl ---------- */
+.zs { --lab: 200px; --spw: 84px; position: relative; }
+.zs-raster { display: grid; grid-template-columns: var(--lab) var(--innen); min-width: calc(var(--lab) + var(--innen)); }
+.zs-lab { position: sticky; left: 0; z-index: 2; background: var(--flaeche); padding: 6px 10px 6px 0; display: flex; align-items: center; gap: 6px; min-width: 0; font-size: .85rem; border-bottom: 1px solid var(--linie); }
+.zs-lab .nm { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.zs-spur { position: relative; border-bottom: 1px solid var(--linie); min-height: 38px; }
+.zs-wochen { display: flex; height: 100%; }
+.zs-wochen > div { flex: 0 0 var(--spw); border-left: 1px solid var(--linie); font-size: .74rem; color: var(--grau); padding: 4px 6px; line-height: 1.25; }
+.zs-wochen > div b { color: var(--tinte); }
+.zs-wochen > div.jetzt b { color: var(--akzent); }
+.zs-spalten { position: absolute; inset: 0; display: flex; pointer-events: none; }
+.zs-spalten > div { flex: 0 0 var(--spw); border-left: 1px solid var(--linie); }
+.zs-ferien { position: absolute; top: 0; bottom: 0; background: repeating-linear-gradient(135deg, var(--ferien) 0 6px, transparent 6px 12px); pointer-events: none; }
+.zs-heute { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--akzent); opacity: .7; pointer-events: none; z-index: 1; }
+.balken { position: absolute; top: 7px; height: 24px; border-radius: 6px; color: #fff; font-size: .76rem; font-weight: 600; display: flex; align-items: center; gap: 6px; padding: 0 8px; white-space: nowrap; overflow: hidden; border: 0; text-align: left; z-index: 1; cursor: default; }
+.balken.bearbeitbar { cursor: pointer; }
+.balken.abL { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.balken.abR { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.balken .soz { width: 16px; height: 16px; font-size: .62rem; }
+.last { height: 76px; }
+.lspalte { position: absolute; top: 0; bottom: 0; display: flex; align-items: flex-end; justify-content: center; }
+.band { position: absolute; left: 6px; right: 6px; background: var(--st-ok); border-radius: 3px; }
+.lbalken { position: relative; width: calc(100% - 26px); border-radius: 4px 4px 0 0; z-index: 1; display: flex; justify-content: center; }
+.lbalken span { position: absolute; top: -17px; font-size: .72rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--tinte); }
+.lbalken.wenig { background: var(--st-wenig-bar); } .lbalken.ok { background: var(--st-ok-bar); } .lbalken.viel { background: var(--st-viel-bar); }
+
+/* ---------- Tabelle ---------- */
+.tabelle { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.tabelle th { text-align: left; font-weight: 600; color: var(--grau); font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; padding: 8px; border-bottom: 1px solid var(--linie); white-space: nowrap; }
+.tabelle td { padding: 8px; border-bottom: 1px solid var(--linie); vertical-align: middle; }
+.tabelle .r { text-align: right; }
+.tabelle tr:hover td { background: var(--flaeche-2); }
+
+/* ---------- Dialog ---------- */
+dialog { border: 0; border-radius: 18px; padding: 0; background: var(--flaeche); color: var(--tinte); width: min(640px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); overflow: auto; overscroll-behavior: contain; }
+dialog::backdrop { background: rgba(10, 20, 40, .45); }
+.dlg { display: flex; flex-direction: column; gap: 16px; padding: 20px; }
+.formular { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.formular .ganz { grid-column: 1 / -1; }
+fieldset { border: 0; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+legend { font-size: .85rem; font-weight: 600; padding: 0; margin-bottom: 5px; }
+.wahl { display: flex; flex-wrap: wrap; gap: 8px; }
+.wahl label { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--linie); border-radius: var(--r-klein); padding: 6px 10px; cursor: pointer; font-size: .9rem; }
+.wahl label:has(input:checked) { border-color: var(--akzent); background: var(--blau-hell); }
+.vorschau { border-radius: var(--r-klein); padding: 10px 12px; background: var(--flaeche-2); font-size: .88rem; display: flex; flex-direction: column; gap: 4px; }
+.fuss { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; }
+.fehler { color: var(--st-viel-t); font-size: .86rem; font-weight: 600; }
+@media (max-width: 640px) {
+  .formular { grid-template-columns: 1fr; }
+  .zs { --lab: 120px; --spw: 70px; }
+  .auftragsliste li { grid-template-columns: auto 1fr; }
+  .auftragsliste li .r { grid-column: 1 / -1; }
+}
+
+/* ---------- Fußzeile, Meldung ---------- */
+.fusszeile { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; border-top: 1px solid var(--linie); padding-top: 14px; font-size: .88rem; }
+.fusszeile a { color: var(--grau); text-decoration: none; }
+.fusszeile a:hover { color: var(--akzent); }
+.fusszeile .rechts { margin-left: auto; }
+.meldung { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(86px + env(safe-area-inset-bottom, 0px)); background: var(--tinte); color: var(--papier); padding: 10px 16px; border-radius: 10px; font-size: .9rem; z-index: 50; max-width: calc(100vw - 32px); }
+@media (min-width: 900px) { .meldung { bottom: 24px; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

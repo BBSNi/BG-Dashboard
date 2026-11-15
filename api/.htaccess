@@ -1,0 +1,4 @@
+# config.php und Beispiel nie direkt ausliefern
+<FilesMatch "^config(\.beispiel)?\.php$">
+  Require all denied
+</FilesMatch>
