@@ -138,7 +138,7 @@
   const fuerLernende = x => (x.zielgruppe || "lernende") !== "lehrkraefte";
 
   /* Hinweis zum Datenschutz (Startseite und „Alle Seiten“) */
-  const DATENSCHUTZ = `<p class="datenschutz">Das Dashboard speichert keine personenbezogenen Daten von Lernenden.</p>`;
+  const DATENSCHUTZ = `<p class="datenschutz">Das Dashboard speichert keine personenbezogenen Daten von Lernenden. · <a href="#impressum">Impressum</a></p>`;
 
   function phasenwahl(ph) {
     return `<div class="klassenwahl" role="group" aria-label="Phase">${PHASEN.map(p => `<button type="button" data-phase="${p.id}" aria-pressed="${p.id === ph}">${p.name}</button>`).join("")}</div>`;
@@ -194,6 +194,21 @@
     return h + `</div>` + DATENSCHUTZ;
   }
 
+  /* ---------- Ansicht: Impressum ---------- */
+  function impressum() {
+    return `<div class="seitenkopf"><div><h1>Impressum</h1></div></div>
+      <section class="karte"><h2>Anbieter</h2>
+        <p>Berufsbildende Schulen des Landkreises Nienburg/Weser<br>Berliner Ring 45, 31582 Nienburg/Weser<br>
+        Telefon 05021 609-0 · E-Mail <a href="mailto:bbs@bbs-nienburg.de">bbs@bbs-nienburg.de</a></p>
+        <p>Schulträger: Landkreis Nienburg/Weser</p></section>
+      <section class="karte"><h2>Hinweise</h2>
+        <p>Das BG-Dashboard bündelt Informationen für das Berufliche Gymnasium. Alle Angaben ohne Gewähr; verbindliche Auskunft geben die Tutorinnen und Tutoren sowie die Abteilungsleitung.</p>
+        <p>Das Dashboard speichert keine personenbezogenen Daten von Lernenden. Auf dem eigenen Gerät wird nur gemerkt, welche Phase gewählt ist.
+        Die Seiten liegen bei GitHub Pages (GitHub Inc.). GitHub kann beim Aufruf technische Daten wie die IP-Adresse protokollieren.</p>
+        <p>Für die Inhalte verlinkter fremder Seiten (z. B. IServ, Moodle, Virtueller Stundenplan) sind deren Anbieter verantwortlich.</p></section>
+      <a href="#start" class="knopf" style="align-self:flex-start">← Zur Startseite</a>`;
+  }
+
   /* Farbiger Bereich (Design C): Kopf in Schulfarbe, darunter schlanke Zeilen */
   function bereich(titel, farbe, inhalt) {
     return `<section class="gruppe farbe-${H.esc(farbe || "grau")}"><h3 class="gruppen-kopf">${H.esc(titel)}</h3><div class="zeilen">${inhalt}</div></section>`;
@@ -242,5 +257,5 @@
   }
 
   BG.B = B;
-  BG.ansichten = { start, klasse, alle };
+  BG.ansichten = { start, klasse, alle, impressum };
 })();

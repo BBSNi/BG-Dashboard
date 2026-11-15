@@ -320,3 +320,4 @@ legend { font-size: .85rem; font-weight: 600; padding: 0; margin-bottom: 5px; }
 .farbe-grau .zeilen a.kachel:hover { border-left-color: var(--grau-2); }
 .zeilen .kachel .symbol { display: none; }
 .kachel .pfeil { margin-left: auto; color: var(--grau-2); font-size: 1.3rem; line-height: 1; flex: none; }
+.datenschutz a { color: var(--grau); }

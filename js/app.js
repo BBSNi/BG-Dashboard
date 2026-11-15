@@ -8,6 +8,7 @@
     klasse: { bereich: "klasse", titel: "Meine Klasse", f: () => BG.ansichten.klasse() },
     alle: { bereich: "alle", titel: "Alle Seiten", f: () => BG.ansichten.alle() },
     kalender: { bereich: "alle", titel: "Ferien und Feiertage", f: () => BG.kalender.ansicht() },
+    impressum: { bereich: "alle", titel: "Impressum", f: () => BG.ansichten.impressum() },
     coolflex: { bereich: "lehrkraefte", titel: "Dashboard", f: () => BG.lehrkraefte.coolflex() },
     ampel: { bereich: "lehrkraefte", titel: "Ampel", f: () => BG.lehrkraefte.ampel() },
     fach: { bereich: "lehrkraefte", titel: "Fach", f: () => BG.lehrkraefte.fach() },
