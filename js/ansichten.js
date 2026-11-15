@@ -185,7 +185,7 @@
     const P = BG.Daten.portal || {};
     const gruppen = (P.gruppen || []).map(g => ({ ...g, kacheln: (P.kacheln || []).filter(x => x.gruppe === g.id && heuteSichtbar(x) && fuerLernende(x)) })).filter(g => g.kacheln.length);
     const schule = (P.fusszeile || []).map(f => ({ titel: f.titel, text: f.text || "", url: f.url, icon: "link" }));
-    let h = `<div class="seitenkopf"><div><h1>Alle Seiten</h1><p class="leise">Alle Angebote für die Oberstufe – Einführungsphase und Qualifikationsphase.</p></div></div>`;
+    let h = `<div class="seitenkopf"><div><h1>Alle Seiten</h1><p class="leise">Alle Informationen für die Oberstufe – Einführungsphase und Qualifikationsphase.</p></div></div>`;
     h += `<div class="raster-2">${gruppen.map(g => `<section class="gruppe"><span class="eyebrow">${H.esc(g.titel)}</span><div class="kacheln" style="grid-template-columns:1fr">${g.kacheln.map(x => kachel(x, true)).join("")}</div></section>`).join("")}`;
     if (schule.length) h += `<section class="gruppe"><span class="eyebrow">Schule</span><div class="kacheln" style="grid-template-columns:1fr">${schule.map(x => kachel(x)).join("")}</div></section>`;
     return h + `</div>`;
