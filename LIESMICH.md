@@ -139,7 +139,7 @@ Dann `data/` und `api/config.php` in der Serverkonfiguration sperren.
 
 - [ ] `api/api.php` ist **noch nicht auf einem echten PHP-Server getestet** (auf diesem Mac gibt es kein PHP).
 - [ ] Offline-Funktion (Service Worker) im Test-Browser nicht prüfbar – auf Handy/Tablet testen.
-- [ ] Adresse des **Abiturrechners** in `config/portal.json` eintragen.
+- [x] Adresse des **Abiturrechners** in `config/portal.json` eintragen (2026-11-15: https://bbsni.github.io/schulrechner/Abitur/).
 - [ ] **Starttermin COOLflex** festlegen und `coolflex.sichtbar_ab` anpassen.
 - [ ] **Ferientermine** mit dem Kultusministerium abgleichen (Verwaltung bzw. `js/config.js`).
 - [ ] Zielgruppen der Seiten Fehlzeiten und Oberstufenreform prüfen (teils an Lehrkräfte gerichtet).
