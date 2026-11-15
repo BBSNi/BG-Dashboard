@@ -201,7 +201,9 @@
   function kachel(x, mitPhase = false) {
     const zusatz = mitPhase ? phasenText(x) : "";
     const innen = `<span class="symbol"><svg><use href="#i-${H.esc(x.icon || "karte")}"/></svg></span><span class="t"><b>${H.esc(x.titel)}${x.neu ? `<span class="marke-neu">neu</span>` : ""}</b><span>${x.url ? H.esc(x.text || "") : "folgt in Kürze"}${H.esc(zusatz)}</span></span>`;
-    return x.url ? `<a class="kachel" href="${H.esc(x.url)}" target="_blank" rel="noopener">${innen}</a>` : `<div class="kachel folgt">${innen}</div>`;
+    if (!x.url) return `<div class="kachel folgt">${innen}</div>`;
+    const intern = x.url.startsWith("#");          // Ansicht innerhalb des Dashboards, z. B. #kalender
+    return `<a class="kachel" href="${H.esc(x.url)}"${intern ? "" : ` target="_blank" rel="noopener"`}>${innen}</a>`;
   }
 
   /* Vorschau ohne Server: Jedes Gerät hat eigene Daten. Ist es leer, Beispiele direkt anbieten. */

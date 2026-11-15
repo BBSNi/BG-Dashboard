@@ -1,9 +1,9 @@
 /* Service Worker: hält die App auf dem Gerät bereit, damit sie auch ohne Netz startet.
    Bei Änderungen an Dateien die VERSION erhöhen – dann laden alle Geräte die neue Fassung. */
-const VERSION = "bg-dashboard-15";
+const VERSION = "bg-dashboard-16";
 const DATEIEN = [
   "./", "index.html", "manifest.webmanifest", "css/app.css",
-  "js/config.js", "js/kern.js", "js/daten.js", "js/ansichten.js", "js/lehrkraefte.js", "js/app.js",
+  "js/ferien.js", "js/config.js", "js/kern.js", "js/daten.js", "js/ansichten.js", "js/kalender.js", "js/lehrkraefte.js", "js/app.js",
   "config/portal.json", "fonts/inter-latin.woff2", "fonts/spacegrotesk-latin.woff2",
   "icons/icon-192.png", "icons/icon-512.png", "icons/apple-touch-icon.png", "icons/logo-bbs.png"
 ];

@@ -271,3 +271,26 @@ legend { font-size: .85rem; font-weight: 600; padding: 0; margin-bottom: 5px; }
 .meldung { position: fixed; left: 50%; transform: translateX(-50%); bottom: calc(86px + env(safe-area-inset-bottom, 0px)); background: var(--tinte); color: var(--papier); padding: 10px 16px; border-radius: 10px; font-size: .9rem; z-index: 50; max-width: calc(100vw - 32px); }
 @media (min-width: 900px) { .meldung { bottom: 24px; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ---------- Kalender: Ferien und Feiertage ---------- */
+.kal-kopf { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.kal-kopf h2 { font-family: var(--titel); font-size: 1.2rem; text-align: center; flex: 1; }
+.kal-raster { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.kal-wt { text-align: center; font-size: .78rem; font-weight: 600; color: var(--grau); padding-bottom: 2px; }
+.kal-tag { aspect-ratio: 1 / 1; display: grid; place-items: center; border-radius: var(--r-klein); font-variant-numeric: tabular-nums; font-size: .95rem; background: var(--flaeche-2); position: relative; }
+.kal-tag.leer { background: transparent; }
+.kal-tag.we { color: var(--grau-2); }
+.kal-tag.ferien { background: var(--gruen-hell); color: var(--gruen-tief); font-weight: 600; }
+.kal-tag.feiertag { background: var(--st-viel); color: var(--st-viel-t); font-weight: 800; }
+.kal-tag.heute { outline: 2.5px solid var(--akzent); outline-offset: -2.5px; }
+.kal-legende { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .82rem; color: var(--grau); }
+.kal-legende span::before { content: ""; display: inline-block; width: .9rem; height: .9rem; border-radius: 4px; margin-right: 6px; vertical-align: -2px; }
+.kal-legende .l-ferien::before { background: var(--gruen-hell); border: 1px solid var(--gruen); }
+.kal-legende .l-feiertag::before { background: var(--st-viel); border: 1px solid var(--st-viel-bar); }
+.kal-legende .l-heute::before { outline: 2.5px solid var(--akzent); outline-offset: -2.5px; background: var(--flaeche-2); }
+.kal-liste { list-style: none; display: grid; gap: 6px; padding: 0; margin: 0; }
+.kal-liste li { padding: 8px 10px; border-radius: var(--r-klein); border-left: 4px solid var(--gruen); background: var(--flaeche-2); }
+.kal-liste li.feiertag { border-left-color: var(--st-viel-bar); }
+.hinweis-klein { font-size: .85rem; color: var(--hinweis-t); background: var(--hinweis); padding: 8px 10px; border-radius: var(--r-klein); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (min-width: 720px) { .kalender { max-width: 560px; } }

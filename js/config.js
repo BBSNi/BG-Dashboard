@@ -22,16 +22,9 @@ BG.config = {
     min: 4,
     max: 6,
     maxParallel: 4,
-    ferien: [
-      { von: "2026-12-23", bis: "2027-01-09", name: "Weihnachtsferien" },
-      { von: "2027-02-01", bis: "2027-02-02", name: "Halbjahresferien" },
-      { von: "2027-03-22", bis: "2027-04-03", name: "Osterferien" },
-      { von: "2027-05-06", bis: "2027-05-06", name: "Christi Himmelfahrt" },
-      { von: "2027-05-17", bis: "2027-05-17", name: "Pfingstmontag" },
-      { von: "2027-07-08", bis: "2027-08-18", name: "Sommerferien" },
-      { von: "2027-10-16", bis: "2027-10-30", name: "Herbstferien" },
-      { von: "2027-12-23", bis: "2028-01-08", name: "Weihnachtsferien" }
-    ]
+    /* Ferien und unterrichtsfreie Feiertage kommen aus js/ferien.js (dieselben Daten wie der Kalender).
+       In der Verwaltung gespeicherte Ferien gehen weiterhin vor. */
+    ferien: BG.ferien.freieTageFuerCoolflex()
   },
 
   /* Adresse der Server-Schnittstelle (relativ zur index.html) */
