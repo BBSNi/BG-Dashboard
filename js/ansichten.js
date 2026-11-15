@@ -144,7 +144,7 @@
   function start() {
     const P = BG.Daten.portal || {}, k = Z.klasse, ph = phaseVon(k), cool = BG.coolflexAktiv();
     const fuerPhase = x => !ph || phasenVon(x).includes(ph);
-    let h = `<div class="seitenkopf"><div><h1>${H.esc(P.titel || "Berufliches Gymnasium")}</h1><p class="leise">${H.esc(P.untertitel || "")}</p></div>${phasenwahl(ph)}</div>`;
+    let h = `<div class="seitenkopf"><div><h1>${H.esc(P.titel || "Berufliches Gymnasium")}</h1>${P.untertitel ? `<p class="leise">${H.esc(P.untertitel)}</p>` : ""}</div>${phasenwahl(ph)}</div>`;
     for (const hw of (P.hinweise || []).filter(x => heuteSichtbar(x) && fuerPhase(x))) {
       h += `<div class="banner gelb"><span>${H.esc(hw.text)}</span>${hw.url ? `<a href="${H.esc(hw.url)}" target="_blank" rel="noopener">Lesen →</a>` : ""}</div>`;
     }

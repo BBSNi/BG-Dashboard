@@ -1,18 +1,12 @@
 {
   "_hinweis": "Inhalte des Portals. Neue Kachel = neuer Eintrag in 'kacheln'. 'sichtbar_ab' / 'sichtbar_bis' (JJJJ-MM-TT) blenden Einträge erst ab bzw. nur bis zu einem Tag ein. 'url' leer = Kachel erscheint als 'folgt in Kürze'. 'zielgruppe': lernende | lehrkraefte | alle. 'phasen': für welche Phase die Kachel auf der Startseite erscheint – \"E\" = Einführungsphase, \"Q\" = Qualifikationsphase, beide oder weglassen = für alle (unter 'Alle Seiten' sehen alle alles).",
   "titel": "Berufliches Gymnasium",
-  "untertitel": "Alles für die Oberstufe an einem Ort",
+  "untertitel": "",
   "coolflex": {
     "_hinweis": "Ab diesem Tag erscheinen COOLflex-Woche, 'Meine Klasse' und der Link zum Lehrkräfte-Bereich. Vorher ist der Lehrkräfte-Bereich nur über …/#coolflex erreichbar. Datum = Platzhalter (erster Schultag 2027/28), anpassen, sobald der Start feststeht.",
     "sichtbar_ab": "2027-08-19"
   },
-  "hinweise": [
-    {
-      "text": "Neu: Die Oberstufenreform – was sich für die einzelnen Jahrgänge ändert",
-      "url": "https://bbsni.github.io/oberstufenreform/",
-      "sichtbar_bis": "2027-07-31"
-    }
-  ],
+  "hinweise": [],
   "gruppen": [
     {
       "id": "rechnen",
@@ -98,7 +92,7 @@
       "titel": "Oberstufenreform",
       "text": "Was sich ändert und wen es betrifft",
       "icon": "neu",
-      "url": "https://bbsni.github.io/oberstufenreform/",
+      "url": "https://bbsni.github.io/oberstufenreform_eltern/",
       "zielgruppe": "lernende",
       "phasen": [
         "E",
