@@ -294,3 +294,13 @@ legend { font-size: .85rem; font-weight: 600; padding: 0; margin-bottom: 5px; }
 .hinweis-klein { font-size: .85rem; color: var(--hinweis-t); background: var(--hinweis); padding: 8px 10px; border-radius: var(--r-klein); }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 @media (min-width: 720px) { .kalender { max-width: 560px; } }
+
+/* ---------- Herunterziehen zum Aktualisieren (Homescreen-App) ---------- */
+.ziehen { position: fixed; left: 50%; top: calc(env(safe-area-inset-top, 0px) + 58px); z-index: 30; width: 42px; height: 42px; margin-top: -42px;
+  display: grid; place-items: center; border-radius: 50%; background: var(--flaeche); color: var(--grau); border: 1px solid var(--linie);
+  box-shadow: var(--schatten); opacity: 0; transform: translate(-50%, 0); pointer-events: none; }
+.ziehen.bereit { color: var(--akzent); border-color: var(--akzent); }
+.ziehen.laedt { color: var(--akzent); opacity: 1 !important; transform: translate(-50%, 70px) !important; }
+.ziehen.laedt svg { animation: ziehen-drehen .8s linear infinite; }
+@keyframes ziehen-drehen { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .ziehen.laedt svg { animation-duration: 2s; } }

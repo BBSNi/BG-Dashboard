@@ -139,6 +139,7 @@ Dann `data/` und `api/config.php` in der Serverkonfiguration sperren.
 
 - [ ] `api/api.php` ist **noch nicht auf einem echten PHP-Server getestet** (auf diesem Mac gibt es kein PHP).
 - [ ] Offline-Funktion (Service Worker) im Test-Browser nicht prüfbar – auf Handy/Tablet testen.
+  Als Homescreen-App: oben herunterziehen lädt neu und holt eine neue Fassung (seit 2026-11-15, im Browser simuliert getestet).
 - [x] Adresse des **Abiturrechners** in `config/portal.json` eintragen (2026-11-15: https://bbsni.github.io/schulrechner/Abitur/).
 - [ ] **Starttermin COOLflex** festlegen und `coolflex.sichtbar_ab` anpassen.
 - [x] **Ferientermine**: seit 2026-11-15 in `js/ferien.js` (amtliche Termine laut KMK, Stand 09.10.2025, Niedersachsen 2026/27 bis 2028/29).

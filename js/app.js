@@ -108,4 +108,48 @@
       if (hatteAlteFassung && !neuGeladen) { neuGeladen = true; location.reload(); }
     });
   }
+
+  /* Herunterziehen zum Aktualisieren – nur als App vom Homescreen (im Browser gibt es das schon) */
+  const alsApp = matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
+  BG.ziehenAktivieren = function () {
+    if (BG.ziehenAktiv) return; BG.ziehenAktiv = true;
+    const SCHWELLE = 80;
+    const el = document.createElement("div");
+    el.className = "ziehen"; el.setAttribute("aria-hidden", "true");
+    el.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>`;
+    document.body.appendChild(el);
+    let start = null, weg = 0, laedt = false;
+    const zeigen = () => {
+      const y = Math.min(weg, 140) * 0.55;
+      el.style.opacity = Math.min(1, weg / 50);
+      el.style.transform = `translate(-50%, ${y}px) rotate(${weg * 2.5}deg)`;
+      el.classList.toggle("bereit", weg >= SCHWELLE);
+    };
+    const zuruecksetzen = () => { weg = 0; el.style.transition = "transform .2s, opacity .2s"; zeigen(); setTimeout(() => { el.style.transition = ""; }, 220); };
+    addEventListener("touchstart", e => {
+      start = (!laedt && scrollY <= 0 && e.touches.length === 1 && !document.querySelector("dialog[open]")) ? e.touches[0].clientY : null;
+    }, { passive: true });
+    addEventListener("touchmove", e => {
+      if (start === null) return;
+      if (scrollY > 0) { start = null; zuruecksetzen(); return; }
+      weg = Math.max(0, e.touches[0].clientY - start); zeigen();
+    }, { passive: true });
+    addEventListener("touchend", async () => {
+      if (start === null) return; start = null;
+      if (weg < SCHWELLE) { zuruecksetzen(); return; }
+      laedt = true; el.classList.add("laedt");
+      try {
+        const r = navigator.serviceWorker && await navigator.serviceWorker.getRegistration();
+        if (r) {
+          await r.update();
+          if (r.installing || r.waiting) {            // neue Fassung: Seite lädt sich nach der Übernahme selbst neu
+            setTimeout(() => location.reload(), 5000);
+            return;
+          }
+        }
+      } catch (e) { /* ohne Netz: einfach neu laden, zeigt den gespeicherten Stand */ }
+      location.reload();
+    });
+  };
+  if (alsApp) BG.ziehenAktivieren();
 })();
