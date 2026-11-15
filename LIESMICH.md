@@ -142,5 +142,5 @@ Dann `data/` und `api/config.php` in der Serverkonfiguration sperren.
 - [x] Adresse des **Abiturrechners** in `config/portal.json` eintragen (2026-11-15: https://bbsni.github.io/schulrechner/Abitur/).
 - [ ] **Starttermin COOLflex** festlegen und `coolflex.sichtbar_ab` anpassen.
 - [ ] **Ferientermine** mit dem Kultusministerium abgleichen (Verwaltung bzw. `js/config.js`).
-- [ ] Zielgruppen der Seiten Fehlzeiten und Oberstufenreform prüfen (teils an Lehrkräfte gerichtet).
+- [ ] Zielgruppe der Seite Fehlzeiten prüfen (teils an Lehrkräfte gerichtet). Oberstufenreform: Kachel am 2026-11-15 entfernt – wird anders veröffentlicht.
 - [ ] Welcher Schulserver? Mit der Schul-IT bzw. dem Schulträger klären.

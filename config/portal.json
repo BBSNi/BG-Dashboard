@@ -86,20 +86,6 @@
         "E",
         "Q"
       ]
-    },
-    {
-      "gruppe": "wissen",
-      "titel": "Oberstufenreform",
-      "text": "Was sich ändert und wen es betrifft",
-      "icon": "neu",
-      "url": "https://bbsni.github.io/oberstufenreform_eltern/",
-      "zielgruppe": "lernende",
-      "phasen": [
-        "E",
-        "Q"
-      ],
-      "neu": true,
-      "sichtbar_bis": "2027-07-31"
     }
   ],
   "fusszeile": [
