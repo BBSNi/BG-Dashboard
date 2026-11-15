@@ -304,3 +304,19 @@ legend { font-size: .85rem; font-weight: 600; padding: 0; margin-bottom: 5px; }
 .ziehen.laedt svg { animation: ziehen-drehen .8s linear infinite; }
 @keyframes ziehen-drehen { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .ziehen.laedt svg { animation-duration: 2s; } }
+
+/* ---------- Design C: farbige Bereiche, schlanke Zeilen ---------- */
+.gruppen-kopf { font-family: var(--schrift); font-size: .95rem; font-weight: 600; padding: 8px 12px; border-radius: var(--r-klein); margin: 0; }
+.farbe-blau .gruppen-kopf { background: var(--blau-hell); color: var(--blau-dunkel); }
+.farbe-gruen .gruppen-kopf { background: var(--gruen-hell); color: var(--gruen-tief); }
+.farbe-grau .gruppen-kopf { background: var(--flaeche-2); color: var(--tinte); }
+.zeilen { display: flex; flex-direction: column; gap: 6px; }
+.zeilen .kachel { border-radius: 0; border: 1px solid var(--linie); border-left: 4px solid var(--blau); padding: 10px 12px; box-shadow: none; gap: 10px; }
+.farbe-gruen .zeilen .kachel { border-left-color: var(--gruen); }
+.farbe-grau .zeilen .kachel { border-left-color: var(--grau-2); }
+.zeilen a.kachel:hover { transform: none; background: var(--flaeche-2); border-color: var(--linie); border-left-color: inherit; }
+.farbe-blau .zeilen a.kachel:hover { border-left-color: var(--blau); }
+.farbe-gruen .zeilen a.kachel:hover { border-left-color: var(--gruen); }
+.farbe-grau .zeilen a.kachel:hover { border-left-color: var(--grau-2); }
+.zeilen .kachel .symbol { display: none; }
+.kachel .pfeil { margin-left: auto; color: var(--grau-2); font-size: 1.3rem; line-height: 1; flex: none; }

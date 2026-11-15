@@ -158,7 +158,7 @@
     const gruppen = (P.gruppen || []).map(g => ({ ...g, kacheln: (P.kacheln || []).filter(x => x.gruppe === g.id && heuteSichtbar(x) && fuerLernende(x) && fuerPhase(x)) })).filter(g => g.kacheln.length);
     if (gruppen.length) {
       h += `<h2 style="margin-bottom:-6px">${ph ? "Für die " + phasenName(ph) : "Alle Seiten"}</h2>`;
-      h += `<div class="raster-2">${gruppen.map(g => `<section class="gruppe"><span class="eyebrow">${H.esc(g.titel)}</span><div class="kacheln" style="grid-template-columns:1fr">${g.kacheln.map(x => kachel(x)).join("")}</div></section>`).join("")}</div>`;
+      h += `<div class="raster-2">${gruppen.map(g => bereich(g.titel, g.farbe, g.kacheln.map(x => kachel(x)).join(""))).join("")}</div>`;
     }
     h += `<footer class="fusszeile">${(P.fusszeile || []).map(f => `<a href="${H.esc(f.url)}" target="_blank" rel="noopener">${H.esc(f.titel)} ↗</a>`).join("")}
       ${cool ? `<a class="rechts" href="#coolflex"><svg width="14" height="14" style="vertical-align:-2px"><use href="#i-schloss"/></svg> Bereich Lehrkräfte</a>` : ""}</footer>`;
@@ -189,9 +189,14 @@
     const gruppen = (P.gruppen || []).map(g => ({ ...g, kacheln: (P.kacheln || []).filter(x => x.gruppe === g.id && heuteSichtbar(x) && fuerLernende(x)) })).filter(g => g.kacheln.length);
     const schule = (P.fusszeile || []).map(f => ({ titel: f.titel, text: f.text || "", url: f.url, icon: "link" }));
     let h = `<div class="seitenkopf"><div><h1>Alle Seiten</h1><p class="leise">Alle Informationen für die Oberstufe – Einführungsphase und Qualifikationsphase.</p></div></div>`;
-    h += `<div class="raster-2">${gruppen.map(g => `<section class="gruppe"><span class="eyebrow">${H.esc(g.titel)}</span><div class="kacheln" style="grid-template-columns:1fr">${g.kacheln.map(x => kachel(x, true)).join("")}</div></section>`).join("")}`;
-    if (schule.length) h += `<section class="gruppe"><span class="eyebrow">Schule</span><div class="kacheln" style="grid-template-columns:1fr">${schule.map(x => kachel(x)).join("")}</div></section>`;
+    h += `<div class="raster-2">${gruppen.map(g => bereich(g.titel, g.farbe, g.kacheln.map(x => kachel(x, true)).join(""))).join("")}`;
+    if (schule.length) h += bereich("Schule", "grau", schule.map(x => kachel(x)).join(""));
     return h + `</div>` + DATENSCHUTZ;
+  }
+
+  /* Farbiger Bereich (Design C): Kopf in Schulfarbe, darunter schlanke Zeilen */
+  function bereich(titel, farbe, inhalt) {
+    return `<section class="gruppe farbe-${H.esc(farbe || "grau")}"><h3 class="gruppen-kopf">${H.esc(titel)}</h3><div class="zeilen">${inhalt}</div></section>`;
   }
 
   function phasenText(x) {
@@ -200,7 +205,7 @@
   }
   function kachel(x, mitPhase = false) {
     const zusatz = mitPhase ? phasenText(x) : "";
-    const innen = `<span class="symbol"><svg><use href="#i-${H.esc(x.icon || "karte")}"/></svg></span><span class="t"><b>${H.esc(x.titel)}${x.neu ? `<span class="marke-neu">neu</span>` : ""}</b><span>${x.url ? H.esc(x.text || "") : "folgt in Kürze"}${H.esc(zusatz)}</span></span>`;
+    const innen = `<span class="symbol"><svg><use href="#i-${H.esc(x.icon || "karte")}"/></svg></span><span class="t"><b>${H.esc(x.titel)}${x.neu ? `<span class="marke-neu">neu</span>` : ""}</b><span>${x.url ? H.esc(x.text || "") : "folgt in Kürze"}${H.esc(zusatz)}</span></span><span class="pfeil" aria-hidden="true">›</span>`;
     if (!x.url) return `<div class="kachel folgt">${innen}</div>`;
     const intern = x.url.startsWith("#");          // Ansicht innerhalb des Dashboards, z. B. #kalender
     return `<a class="kachel" href="${H.esc(x.url)}"${intern ? "" : ` target="_blank" rel="noopener"`}>${innen}</a>`;
