@@ -138,7 +138,7 @@
   const fuerLernende = x => (x.zielgruppe || "lernende") !== "lehrkraefte";
 
   /* Hinweis zum Datenschutz (Startseite und „Alle Seiten“) */
-  const DATENSCHUTZ = `<p class="datenschutz">Das Dashboard speichert keine personenbezogenen Daten von Lernenden. Es gibt keine Anmeldung; nur die gewählte Phase bzw. Klasse wird auf diesem Gerät gemerkt.</p>`;
+  const DATENSCHUTZ = `<p class="datenschutz">Das Dashboard speichert keine personenbezogenen Daten von Lernenden.</p>`;
 
   function phasenwahl(ph) {
     return `<div class="klassenwahl" role="group" aria-label="Phase">${PHASEN.map(p => `<button type="button" data-phase="${p.id}" aria-pressed="${p.id === ph}">${p.name}</button>`).join("")}</div>`;
