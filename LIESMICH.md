@@ -133,10 +133,10 @@ Dann `data/` und `api/config.php` in der Serverkonfiguration sperren.
 - Lesen ist für alle mit dem Link möglich (Auftragstitel sind unkritisch). **Seit 2026-11-16:** Das Kürzel der Lehrkraft liefert
   `api/api.php` nur nach Anmeldung aus (Beschäftigtendatum). Die Notiz bleibt öffentlich, weil Lernende sie sehen – im Formular steht „keine Namen“.
 - Schriften liegen lokal, es werden keine Google-Server aufgerufen. Kein Tracking, keine externen Skripte.
-- **Datenschutzhinweise** (`#datenschutz`, in `js/ansichten.js`), Stand 2026-11-16. Kontakt der bzw. des DSB vorerst über die Schuladresse
-  (bbs@bbs-nienburg.de, Betreff „Datenschutz“) – genauen Kontakt ergänzen, sobald bekannt. USA-Übermittlung: GitHub nimmt laut eigener
-  Datenschutzerklärung am EU-US Data Privacy Framework teil (geprüft 2026-11-16). Die anderen BBSNi-Seiten verlinken auf diese Seite.
-- **Vor dem COOLflex-Start mit Server:** Datenschutzhinweise um Anmeldung (Sitzungscookie „coolflex“), Sperre nach Fehlversuchen
+- **Datenschutzhinweise und Impressum** liegen seit 2026-11-16 zentral für alle BBSNi-Seiten im Repo `BBSNi/bbsni.github.io`
+  (https://bbsni.github.io/datenschutz.html, Ordner `Homepage/Seiten/bbsni.github.io`). Das Dashboard verlinkt dorthin; die frühere Adresse `#datenschutz` leitet weiter.
+  Kontakt der bzw. des DSB vorerst über die Schuladresse – genauen Kontakt dort ergänzen. Speichert ein Angebot künftig etwas auf dem Gerät, dort eintragen.
+- **Vor dem COOLflex-Start mit Server:** die zentralen Datenschutzhinweise um Anmeldung (Sitzungscookie „coolflex“), Sperre nach Fehlversuchen
   (IP-Adresse gehasht, 15 Minuten) und Speicherort der Datenbank ergänzen; Eintrag ins Verzeichnis der Verarbeitungstätigkeiten der Schule.
 
 ---
@@ -153,4 +153,4 @@ Dann `data/` und `api/config.php` in der Serverkonfiguration sperren.
   Pflege: neue Schuljahre in `js/ferien.js` anhängen, `ABGEDECKT_BIS` anpassen, `VERSION` in `sw.js` erhöhen.
 - [ ] Zielgruppe der Seite Fehlzeiten prüfen (teils an Lehrkräfte gerichtet). Oberstufenreform: Kachel am 2026-11-15 entfernt – wird anders veröffentlicht.
 - [ ] Welcher Schulserver? Mit der Schul-IT bzw. dem Schulträger klären.
-- [ ] **Datenschutzhinweise:** genauen Kontakt der bzw. des Datenschutzbeauftragten ergänzen und das Dashboard dort kurz vorstellen (seit 2026-11-16 online mit Schuladresse).
+- [ ] **Datenschutzhinweise** (`bbsni.github.io/datenschutz.html`): genauen Kontakt der bzw. des Datenschutzbeauftragten ergänzen und die Seiten dort kurz vorstellen.

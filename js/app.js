@@ -9,7 +9,6 @@
     alle: { bereich: "alle", titel: "Alle Seiten", f: () => BG.ansichten.alle() },
     kalender: { bereich: "alle", titel: "Ferien und Feiertage", f: () => BG.kalender.ansicht() },
     impressum: { bereich: "alle", titel: "Impressum", f: () => BG.ansichten.impressum() },
-    datenschutz: { bereich: "alle", titel: "Datenschutz", f: () => BG.ansichten.datenschutz() },
     coolflex: { bereich: "lehrkraefte", titel: "Dashboard", f: () => BG.lehrkraefte.coolflex() },
     ampel: { bereich: "lehrkraefte", titel: "Ampel", f: () => BG.lehrkraefte.ampel() },
     fach: { bereich: "lehrkraefte", titel: "Fach", f: () => BG.lehrkraefte.fach() },
@@ -20,6 +19,7 @@
   /* Adresse lesen: #klasse-11b setzt zugleich die Klasse (für Links aus IServ je Klasse) */
   function aktuelleAnsicht() {
     let h = (location.hash || "#start").slice(1).toLowerCase();
+    if (h === "datenschutz") { location.replace("https://bbsni.github.io/datenschutz.html"); return "start"; }   // frühere Adresse: zentrale Datenschutzhinweise für alle BBSNi-Seiten
     const m = h.match(/^klasse-(\w+)$/);
     if (m) { const k = C.klassen.find(x => x.toLowerCase() === m[1]); if (k) klasseSetzen(k, false); h = "klasse"; }
     if (h === "klasse" && !BG.coolflexAktiv()) h = "start";   // vor dem COOLflex-Start gibt es "Meine Klasse" noch nicht
