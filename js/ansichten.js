@@ -138,7 +138,7 @@
   const fuerLernende = x => (x.zielgruppe || "lernende") !== "lehrkraefte";
 
   /* Hinweis zum Datenschutz (Startseite und „Alle Seiten“) */
-  const DATENSCHUTZ = `<p class="datenschutz">Das Dashboard speichert keine personenbezogenen Daten von Lernenden. · <a href="#impressum">Impressum</a></p>`;
+  const DATENSCHUTZ = `<p class="datenschutz">Das Dashboard speichert keine personenbezogenen Daten von Lernenden. · <a href="#datenschutz">Datenschutz</a> · <a href="#impressum">Impressum</a></p>`;
 
   function phasenwahl(ph) {
     return `<div class="klassenwahl" role="group" aria-label="Phase">${PHASEN.map(p => `<button type="button" data-phase="${p.id}" aria-pressed="${p.id === ph}">${p.name}</button>`).join("")}</div>`;
@@ -203,9 +203,44 @@
         <p>Schulträger: Landkreis Nienburg/Weser</p></section>
       <section class="karte"><h2>Hinweise</h2>
         <p>Das BG-Dashboard bündelt Informationen für das Berufliche Gymnasium. Alle Angaben ohne Gewähr; verbindliche Auskunft geben die Tutorinnen und Tutoren sowie die Abteilungsleitung.</p>
-        <p>Das Dashboard speichert keine personenbezogenen Daten von Lernenden. Auf dem eigenen Gerät wird nur gemerkt, welche Phase gewählt ist.
-        Die Seiten liegen bei GitHub Pages (GitHub Inc.). GitHub kann beim Aufruf technische Daten wie die IP-Adresse protokollieren.</p>
+        <p>Das Dashboard speichert keine personenbezogenen Daten von Lernenden. Auf dem eigenen Gerät werden nur Einstellungen wie die gewählte Phase gemerkt.
+        Die Seiten liegen bei GitHub Pages (GitHub Inc.). Einzelheiten stehen in den <a href="#datenschutz">Datenschutzhinweisen</a>.</p>
         <p>Für die Inhalte verlinkter fremder Seiten (z. B. IServ, Moodle, Virtueller Stundenplan) sind deren Anbieter verantwortlich.</p></section>
+      <a href="#start" class="knopf" style="align-self:flex-start">← Zur Startseite</a>`;
+  }
+
+  /* ---------- Ansicht: Datenschutzhinweise (Art. 13 DSGVO) ----------
+     Stand 2026-11-16. Kontakt der bzw. des DSB vorerst über die Schuladresse – genauen Kontakt ergänzen, sobald bekannt.
+     Beim Start von COOLflex mit Server ergänzen (Anmeldung, Sitzungscookie, Fehlversuche). */
+  function datenschutz() {
+    return `<div class="seitenkopf"><div><h1>Datenschutzhinweise</h1></div></div>
+      <section class="karte"><h2>Verantwortliche Stelle</h2>
+        <p>Berufsbildende Schulen des Landkreises Nienburg/Weser, vertreten durch die Schulleitung<br>Berliner Ring 45, 31582 Nienburg/Weser<br>
+        Telefon 05021 609-0 · E-Mail <a href="mailto:bbs@bbs-nienburg.de">bbs@bbs-nienburg.de</a></p>
+        <p><b>Datenschutzbeauftragte bzw. Datenschutzbeauftragter der Schule:</b> erreichbar über die Anschrift oben oder per E-Mail an
+        <a href="mailto:bbs@bbs-nienburg.de?subject=Datenschutz">bbs@bbs-nienburg.de</a> (Betreff „Datenschutz“).</p></section>
+      <section class="karte"><h2>Was das Dashboard verarbeitet</h2>
+        <p>Das BG-Dashboard ist ein Informationsangebot ohne Anmeldung für Lernende. Es gibt keine Formulare für Lernende, keine Statistik- oder Werbedienste und keine Cookies zu solchen Zwecken.
+        Schriften und Symbole kommen vom selben Server wie das Dashboard, nicht von Drittanbietern.</p></section>
+      <section class="karte"><h2>Speicherung auf dem eigenen Gerät</h2>
+        <p>Im Speicher des Browsers werden gemerkt: die gewählte Phase bzw. Klasse, Ansichtseinstellungen und die zuletzt geladenen Inhalte, damit das Dashboard auch ohne Netz startet.
+        Diese Angaben bleiben auf dem Gerät und werden nicht übertragen. Sie lassen sich jederzeit über die Browser-Einstellungen (Websitedaten löschen) entfernen.</p>
+        <p>Rechtsgrundlage: § 25 Abs. 2 Nr. 2 TDDDG – die Speicherung ist für die gewünschte Funktion unbedingt erforderlich.</p></section>
+      <section class="karte"><h2>Bereitstellung über GitHub Pages</h2>
+        <p>Das Dashboard liegt bei GitHub Pages, einem Dienst der GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA.
+        Beim Aufruf verarbeitet GitHub technisch notwendige Verbindungsdaten (insbesondere IP-Adresse, Zeitpunkt, aufgerufene Seite und Angaben zum Browser), um die Seiten auszuliefern und vor Angriffen zu schützen.
+        Dabei können Daten in die USA übermittelt werden. GitHub nimmt nach eigenen Angaben am EU-US Data Privacy Framework teil;
+        die Übermittlung stützt sich damit auf den Angemessenheitsbeschluss der EU-Kommission (Art. 45 DSGVO).
+        Weitere Informationen: <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">Datenschutzerklärung von GitHub</a>.</p>
+        <p>Rechtsgrundlage: Art. 6 Abs. 1 Buchst. e DSGVO in Verbindung mit § 3 NDSG (Information der Lernenden als Teil der schulischen Aufgaben).</p></section>
+      <section class="karte"><h2>Links zu anderen Angeboten</h2>
+        <p>Links zu IServ, Moodle, dem Virtuellen Stundenplan und der Schulhomepage öffnen sich in einem neuen Fenster. Erst dann werden Daten an diese Angebote übertragen; dort gelten deren eigene Datenschutzhinweise.</p></section>
+      <section class="karte"><h2>Rechte der betroffenen Personen</h2>
+        <p>Betroffene Personen haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung der Verarbeitung (Art. 18) und Widerspruch (Art. 21).
+        Anfragen bitte an die Schule oder die bzw. den Datenschutzbeauftragten richten.</p>
+        <p>Außerdem besteht ein Beschwerderecht bei der Aufsichtsbehörde: Landesbeauftragte für den Datenschutz Niedersachsen (LfD), Prinzenstraße 5, 30159 Hannover,
+        <a href="https://www.lfd.niedersachsen.de" target="_blank" rel="noopener">www.lfd.niedersachsen.de</a>.</p>
+        <p class="leise">Stand: 16.11.2026</p></section>
       <a href="#start" class="knopf" style="align-self:flex-start">← Zur Startseite</a>`;
   }
 
@@ -257,5 +292,5 @@
   }
 
   BG.B = B;
-  BG.ansichten = { start, klasse, alle, impressum };
+  BG.ansichten = { start, klasse, alle, impressum, datenschutz };
 })();

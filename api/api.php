@@ -165,7 +165,13 @@ try {
         case 'GET daten':
             $pdo = db($cfg);
             $zeilen = $pdo->query('SELECT * FROM auftraege ORDER BY start, ende')->fetchAll();
-            foreach ($zeilen as &$z) { $z['klassen'] = json_decode($z['klassen'], true) ?: []; $z['umfang'] = (float)$z['umfang']; }
+            foreach ($zeilen as &$z) {
+                $z['klassen'] = json_decode($z['klassen'], true) ?: []; $z['umfang'] = (float)$z['umfang'];
+                /* Datenschutz: Das Kürzel der Lehrkraft ist ein Beschäftigtendatum – nur angemeldet sichtbar.
+                   Die Notiz bleibt öffentlich, weil Lernende sie auf der Auftragskarte sehen (Hinweis im Formular: keine Namen). */
+                if (!$angemeldet) unset($z['lehrkraft']);
+            }
+            unset($z);
             $e = $pdo->query("SELECT wert FROM einstellungen WHERE schluessel = 'allgemein'")->fetchColumn();
             antwort(['ok' => true, 'auftraege' => $zeilen, 'einstellungen' => $e ? json_decode($e, true) : null, 'stand' => gmdate('c')]);
 

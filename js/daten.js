@@ -83,11 +83,13 @@
       if (this.modus === "vorschau") { this.angemeldet = true; H.speicher.schreiben("bg-vorschau-angemeldet", true); this.melden(); return; }
       this.pruefeSchreiben();
       await api("anmelden", { passwort }); this.angemeldet = true; this.melden();
+      await this.neuLaden();   // erst angemeldet liefert der Server die Kürzel der Lehrkräfte mit
     },
     async abmelden() {
       if (this.modus === "vorschau") { this.angemeldet = false; H.speicher.schreiben("bg-vorschau-angemeldet", false); this.melden(); return; }
       try { await api("abmelden", {}); } catch (e) { }
       this.angemeldet = false; this.melden();
+      await this.neuLaden();   // Kürzel wieder aus dem Zwischenspeicher dieses Geräts entfernen
     },
     async speichern(a) {
       if (this.modus === "vorschau") {

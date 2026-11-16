@@ -1,6 +1,6 @@
 /* Service Worker: hält die App auf dem Gerät bereit, damit sie auch ohne Netz startet.
    Bei Änderungen an Dateien die VERSION erhöhen – dann laden alle Geräte die neue Fassung. */
-const VERSION = "bg-dashboard-20";
+const VERSION = "bg-dashboard-21";
 const DATEIEN = [
   "./", "index.html", "manifest.webmanifest", "css/app.css",
   "js/ferien.js", "js/config.js", "js/kern.js", "js/daten.js", "js/ansichten.js", "js/kalender.js", "js/lehrkraefte.js", "js/app.js",
